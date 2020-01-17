@@ -8,3 +8,8 @@ class Bombero{
         habilidad.push();
     }
 }
+
+// let a = new Bombero("Juan","correr");
+// a = new Array();
+// a.habilidades.push('hola')
+// console.log(habilidad);

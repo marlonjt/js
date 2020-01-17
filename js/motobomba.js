@@ -14,42 +14,51 @@ class Motobomba{
         return this.estado;
     }
     toString(){
-        if(this.estado == true){
+        if(this.estado === true){
             return "la motobomba con id " + this.id + " esta encendida"
         }else{
             return "la motobomba con id " + this.id + " esta apagada"
         }
     }
-    probar(){
-        let prueba = document.getElementById("id").value;
+    cambio(){
+        let d = document.getElementById("id").value;
         let cap = document.getElementById("capacidad").value;
-        this.id = prueba;
+        this.id = d;
         this.capacidad = cap;
-        document.getElementById("demo").innerHTML = 'el ID es:  '+prueba+' '+'Capacidad es:  '+cap;
+        //console.log(this.id + ' ' +this.capacidad);
+        document.getElementById("resultado").innerHTML = 'El ID es:  '+ d + ' '+'La Capacidad es:  '+cap;
         document.getElementById("img").innerHTML = ('<img src="img/mot.jpg"/>');
+       
+        //condicional para que vea en que el estado y el cuadro este en verde o rojo.
+        if(this.estado == true){
+            document.getElementById("verde").innerHTML = ('<img src="img/verde.jpg"/>');
+        }else{
+            document.getElementById("verde").innerHTML = ('<img src="img/rojo.jpg"/>');
+        }
         
+        //creacion del boton y funcionalidad para que cambie de nombre y el color de cuadro
         let boton = document.createElement("button");
-        boton.innerHTML = "boton";
+        boton.innerHTML = "ENCENDIDO";
         document.body.appendChild(boton);
 
+        //comparacion entre estados true o false para cambio de color y nombre en boton 
         boton.onclick = function() {
             if(this.estado == true){
-                return boton.innerHTML='encendido';
+                boton.innerHTML = "ENCENDIDO"
+                document.getElementById("verde").innerHTML = ('<img src="img/verde.jpg"/>');
+                return this.estado= false;
             }else{
-                return boton.innerHTML='apagado';
+                boton.innerHTML = "APAGADO"
+                document.getElementById("verde").innerHTML = ('<img src="img/rojo.jpg"/>');
+                return this.estado= true;
             }
         }
         
     }
-    ocultar(){
-        if(this.estado == true){
-            document.getElementById('cuadro').style.display = 'none';
-        }else{
-            document.getElementById('cuadro').style.display = 'block';
-        }
-    }
-
+   
 }
+//intanciando la clase motobomba para el funcionamiento
+let ejemplo = new Motobomba(1,59,true);
+console.log(ejemplo)
+console.log(toString());
 
-let prueba = new Motobomba(23,22,true);
-console.log(prueba.toString());
