@@ -15,17 +15,31 @@ class Motobomba{
     }
     toString(){
         if(this.estado == true){
-            return "la motobomba con" + this.id + " esta encendida"
+            return "la motobomba con id " + this.id + " esta encendida"
         }else{
-            return "la motobomba con" + this.id + " esta apagada"
+            return "la motobomba con id " + this.id + " esta apagada"
         }
     }
     probar(){
-        var prueba = document.getElementById("id").value;
-        var cap = document.getElementById("capacidad").value;
+        let prueba = document.getElementById("id").value;
+        let cap = document.getElementById("capacidad").value;
         this.id = prueba;
-        document.write('el ID es:'+prueba+'  '+'Capacidad es:'+cap);
-        document.write('<img src="img/mot.jpg"/>');
+        this.capacidad = cap;
+        document.getElementById("demo").innerHTML = 'el ID es:  '+prueba+' '+'Capacidad es:  '+cap;
+        document.getElementById("img").innerHTML = ('<img src="img/mot.jpg"/>');
+        
+        let boton = document.createElement("button");
+        boton.innerHTML = "boton";
+        document.body.appendChild(boton);
+
+        boton.onclick = function() {
+            if(this.estado == true){
+                return boton.innerHTML='encendido';
+            }else{
+                return boton.innerHTML='apagado';
+            }
+        }
+        
     }
     ocultar(){
         if(this.estado == true){
@@ -34,10 +48,8 @@ class Motobomba{
             document.getElementById('cuadro').style.display = 'block';
         }
     }
-   // mostrar(){
-    //    document.getElementById('cuadro').style.display = 'block';
-   // }
+
 }
 
-var prueba = new Motobomba(1,22,true);
-prueba.apagar()
+let prueba = new Motobomba(23,22,true);
+console.log(prueba.toString());
